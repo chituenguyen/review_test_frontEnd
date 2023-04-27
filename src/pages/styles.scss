@@ -1,0 +1,26 @@
+@use '../assets/styles/' as *;
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 600px;
+}
+.home{
+    display: flex;
+    &__left{
+        &__button{
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+}
+.formModal{
+    display: flex;
+    form{
+        gap:0px;
+    }
+}
+
