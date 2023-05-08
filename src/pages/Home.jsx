@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import { ratioList } from "../const/listConst";
 import SelectCustom from "../Components/Select";
 import { attList } from "../const/attConst";
+import { algorithmConst } from "../const/algorithmsConst";
 import CustomInput from "../Components/CustomInput/index";
 import Button from "../Components/Button/index";
 import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { predictDataThunk } from "../redux/action/predictAction";
 import image from "../assets/img/image.png";
+import ss from "../assets/img/ss.jpg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
 import TitleLoading from "../Components/Title/TitleLoading";
@@ -17,6 +19,10 @@ import Modal from "../Components/Modal/index";
 import FormModal from "./FormModal";
 
 const Home = () => {
+  const arrayImage = [
+    { key: "1", value: image },
+    { key: "2", value: ss },
+  ];
   const {
     register,
     handleSubmit,
@@ -48,6 +54,7 @@ const Home = () => {
       colPredict: data.att,
       numberrow: data.data,
       inputDay: data.predict,
+      algorithm: data.algorithm,
     };
     dispatch(predictDataThunk(dataSubmit)).then((res) => {
       if (res.payload !== undefined) {
@@ -55,9 +62,14 @@ const Home = () => {
       }
     });
   };
+  const selectedImage = arrayImage.find(
+    (item) => item.key === getValues("algorithm")
+  );
   return (
     <div>
-      <h1>ỨNG DỤNG DỰ ĐOÁN GIÁ CHỨNG KHOÁN BẰNG MÔ HÌNH LAI GHÉP GIỮA ARIMA VÀ RNN</h1>
+      <h1>
+        ỨNG DỤNG DỰ ĐOÁN GIÁ CHỨNG KHOÁN BẰNG MÔ HÌNH LAI GHÉP GIỮA ARIMA VÀ RNN
+      </h1>
       <div className="home">
         <div className="home__left">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,6 +128,17 @@ const Home = () => {
             >
               {errors.predict?.message}
             </CustomInput>
+
+            <SelectCustom
+              setValue={setValue}
+              id="algorithm"
+              register={register}
+              label={"Thuật toán"}
+              options={algorithmConst}
+              placeholder={"Chọn thuật toán"}
+            >
+              {errors.algorithm?.message}
+            </SelectCustom>
             <Button
               name={
                 !loading ? "Thực thi" : <TitleLoading name="Đang thực thi" />
@@ -146,7 +169,11 @@ const Home = () => {
           </form>
           <div className="home__left__button"></div>
         </div>
-        {wait ? <img src={image} alt="" style={{ width: "60%" }} /> : ""}
+        {wait ? (
+          <img src={selectedImage?.value} alt="" style={{ width: "60%" }} />
+        ) : (
+          ""
+        )}
       </div>
 
       <Modal

@@ -15,6 +15,8 @@ export const schema = yup.object({
     }),
   ratio: yup.string().required("* Vui lòng chọn tỉ lệ"),
   att: yup.string().required("* Vui lòng chọn thuộc tính"),
+  algorithms: yup.string().required("* Vui lòng chọn thuật toán cần xử lý"),
+  
   data: yup
     .string()
     .required("* Vui lòng nhập chiều dài dữ liệu học")
