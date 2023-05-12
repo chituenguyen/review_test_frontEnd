@@ -34,6 +34,7 @@ const Home = () => {
     mode: "all",
     resolver: yupResolver(schema),
   });
+  console.log(errors)
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.predict);
   const [wait, setWait] = useState(false);
@@ -48,13 +49,14 @@ const Home = () => {
     setOpen(false);
   };
   const onSubmit = (data) => {
+    console.log(data);
     const dataSubmit = {
       file: data.file,
       inputTile: data.ratio,
       colPredict: data.att,
       numberrow: data.data,
       inputDay: data.predict,
-      algorithm: data.algorithm,
+      Chon_model: data.algorithms,
     };
     dispatch(predictDataThunk(dataSubmit)).then((res) => {
       if (res.payload !== undefined) {
@@ -131,13 +133,13 @@ const Home = () => {
 
             <SelectCustom
               setValue={setValue}
-              id="algorithm"
+              id="algorithms"
               register={register}
               label={"Thuật toán"}
               options={algorithmConst}
               placeholder={"Chọn thuật toán"}
             >
-              {errors.algorithm?.message}
+              {errors.algorithms?.message}
             </SelectCustom>
             <Button
               name={

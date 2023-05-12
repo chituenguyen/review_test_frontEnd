@@ -21,7 +21,7 @@ const CustomSelect = React.forwardRef(
       if (options.length > 0) {
         return options.map((item) => {
           return (
-            <option value={item.id} key={item.id}>
+            <option value={item.name} key={item.id}>
               {item.name}
             </option>
           );
