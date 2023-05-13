@@ -3,16 +3,15 @@
 .custom-select {
   &__wrapper {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
     .select {
-      height: 45px;
+      height: 35px;
       font-family: $f-family;
       border: 1px solid $primary-color;
       border-radius: 2px;
       width: 100%;
       padding: 0px 8px;
       margin-top: 7px;
-      // height: 100%;
       width: 100%;
       outline: none;
       cursor: pointer;

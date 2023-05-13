@@ -1,4 +1,3 @@
-import { fireEvent } from '@testing-library/react';
 import './styles.scss';
 export const ImageUpload = ({
   text = 'Chỉ hỗ trợ file JPG, PNG. Kích thước tối đa 512KB.',

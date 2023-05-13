@@ -41,4 +41,5 @@
 #root{
   background-image: url("../src/assets/img/bg.jpg");
   background-size: cover;
+  min-height: 100vh;
 }

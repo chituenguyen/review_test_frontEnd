@@ -1,26 +1,32 @@
-@use '../assets/styles/' as *;
+@use "../assets/styles/" as *;
 
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 600px;
+form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
 }
-.home{
-    display: flex;
-    &__left{
-        &__button{
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+.home {
+    &__h1 {
+    font-size: 15px;
+  }
+  display: flex;
+  &__left {
+    &__button {
+      display: flex;
+      flex-direction: column;
     }
+  }
 }
-.formModal{
-    display: flex;
-    form{
-        gap:0px;
-    }
+.formModal {
+  display: flex;
+  form {
+    gap: 0px;
+  }
 }
+.containerBtn{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap:15px;
 
+}

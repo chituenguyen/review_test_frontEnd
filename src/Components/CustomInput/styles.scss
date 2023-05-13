@@ -1,7 +1,7 @@
 @use '../../assets/styles/' as *;
 
 .custom-input {
-  margin: 10px 0;
+  margin: 0 0;
   width: 100%;
   text-align: left;
   .custom-input__label {
@@ -20,9 +20,7 @@
       border: 1px solid $primary-color;
       border-radius: 2px;
       width: 100%;
-      padding: 21px 12px;
-      // margin-top: 2px;
-      height: 45px;
+      height: 35px;
 
       &:hover {
         border: 1px solid $primary-color !important;
@@ -91,7 +89,6 @@
 .file--upload-content {
   display: flex;
   width: 145px;
-  height: 58px;
   border: 1px solid $color-black-0;
   margin-top: 15px;
   justify-content: center;

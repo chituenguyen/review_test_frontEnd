@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { predictDataThunk } from "../redux/action/predictAction";
 import image from "../assets/img/image.png";
 import ss from "../assets/img/ss.jpg";
+import tt from "../assets/img/tt.jpg";
+import rnn from "../assets/img/rnn.jpg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
 import TitleLoading from "../Components/Title/TitleLoading";
@@ -20,8 +22,11 @@ import FormModal from "./FormModal";
 
 const Home = () => {
   const arrayImage = [
-    { key: "1", value: image },
-    { key: "2", value: ss },
+    { key: "1", value: image, type: "Arima" },
+    { key: "2", value: ss, type: "SongSong" },
+    { key: "3", value: tt, type: "TuanTu" },
+    { key: "4", value: rnn, type: "RNN" },
+
   ];
   const {
     register,
@@ -34,7 +39,6 @@ const Home = () => {
     mode: "all",
     resolver: yupResolver(schema),
   });
-  console.log(errors)
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.predict);
   const [wait, setWait] = useState(false);
@@ -49,7 +53,6 @@ const Home = () => {
     setOpen(false);
   };
   const onSubmit = (data) => {
-    console.log(data);
     const dataSubmit = {
       file: data.file,
       inputTile: data.ratio,
@@ -65,11 +68,11 @@ const Home = () => {
     });
   };
   const selectedImage = arrayImage.find(
-    (item) => item.key === getValues("algorithm")
+    (item) => item.type === getValues("algorithms")
   );
   return (
     <div>
-      <h1>
+      <h1 className="home__h1">
         ỨNG DỤNG DỰ ĐOÁN GIÁ CHỨNG KHOÁN BẰNG MÔ HÌNH LAI GHÉP GIỮA ARIMA VÀ RNN
       </h1>
       <div className="home">
@@ -115,7 +118,6 @@ const Home = () => {
               id="data"
               label={"Chiều dài dữ liệu học"}
               radius="2px"
-              height="45px"
             >
               {errors.data?.message}
             </CustomInput>
@@ -126,7 +128,6 @@ const Home = () => {
               id="predict"
               label={"Chiều dài dự đoán"}
               radius="2px"
-              height="45px"
             >
               {errors.predict?.message}
             </CustomInput>
@@ -141,41 +142,40 @@ const Home = () => {
             >
               {errors.algorithms?.message}
             </SelectCustom>
-            <Button
-              name={
-                !loading ? "Thực thi" : <TitleLoading name="Đang thực thi" />
-              }
-              bheight={44}
-              fz="14px"
-              outline="1.5px solid #DEDEDE"
-              bwidth={"100%"}
-              onClick={handleSubmit(onSubmit)}
-              disabled={loading}
-            />
-            <Button
-              name={"Hiển thị kết quả dự đoán"}
-              bheight={44}
-              fz="14px"
-              bwidth={"100%"}
-              disabled={!wait}
-              onClick={(e) => handleOpenModal(e)}
-            />
-            <Button
-              name={"Reset"}
-              bheight={44}
-              fz="14px"
-              bwidth={"100%"}
-              onClick={(e) => handleReset(e)}
-              disabled={loading}
-            />
+            <div className="containerBtn">
+              <Button
+                name={
+                  !loading ? "Thực thi" : <TitleLoading name="Đang thực thi" />
+                }
+                bheight={"35px"}
+                fz="14px"
+                outline="1.5px solid #DEDEDE"
+                bwidth={"100%"}
+                onClick={handleSubmit(onSubmit)}
+                disabled={loading}
+              />
+              <Button
+                name={"Hiển thị kết quả dự đoán"}
+                bheight={"35px"}
+                fz="14px"
+                bwidth={"100%"}
+                disabled={!wait}
+                onClick={(e) => handleOpenModal(e)}
+                type="button"
+              />
+              <Button
+                name={"Reset"}
+                bheight={"35px"}
+                fz="14px"
+                bwidth={"100%"}
+                onClick={(e) => handleReset(e)}
+                disabled={loading}
+              />
+            </div>
           </form>
           <div className="home__left__button"></div>
         </div>
-        {wait ? (
-          <img src={selectedImage?.value} alt="" style={{ width: "60%" }} />
-        ) : (
-          ""
-        )}
+        {wait ? <img src={image} alt="" style={{ width: "60%" }} /> : ""}
       </div>
 
       <Modal
@@ -183,7 +183,7 @@ const Home = () => {
         modalTitle={"Thông tin"}
         open={open}
         setOpen={setOpen}
-        children={<FormModal setOpen={setOpen} />}
+        children={<FormModal imageProps={selectedImage} />}
       />
     </div>
   );
