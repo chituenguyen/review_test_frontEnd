@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import arima from "../assets/img/arima.jpg";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import CustomInput from "../Components/CustomInput";

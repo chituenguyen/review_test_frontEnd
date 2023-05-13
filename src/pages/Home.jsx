@@ -11,6 +11,7 @@ import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { predictDataThunk } from "../redux/action/predictAction";
 import image from "../assets/img/image.png";
+import arima from "../assets/img/arima.jpg";
 import ss from "../assets/img/ss.jpg";
 import tt from "../assets/img/tt.jpg";
 import rnn from "../assets/img/rnn.jpg";
@@ -22,11 +23,10 @@ import FormModal from "./FormModal";
 
 const Home = () => {
   const arrayImage = [
-    { key: "1", value: image, type: "Arima" },
+    { key: "1", value: arima, type: "Arima" },
     { key: "2", value: ss, type: "SongSong" },
     { key: "3", value: tt, type: "TuanTu" },
     { key: "4", value: rnn, type: "RNN" },
-
   ];
   const {
     register,
