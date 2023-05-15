@@ -159,7 +159,7 @@ const Home = () => {
                 bheight={"35px"}
                 fz="14px"
                 bwidth={"100%"}
-                disabled={!wait}
+                disabled={!wait || loading}
                 onClick={(e) => handleOpenModal(e)}
                 type="button"
               />
@@ -175,7 +175,7 @@ const Home = () => {
           </form>
           <div className="home__left__button"></div>
         </div>
-        {wait ? <img src={image} alt="" style={{ width: "60%" }} /> : ""}
+        {wait && !loading ? <img src={image} alt="" style={{ width: "60%" }} /> : ""}
       </div>
 
       <Modal
