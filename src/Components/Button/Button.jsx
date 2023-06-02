@@ -7,7 +7,6 @@ const Button = ({
   name,
   IconBtnMui,
   onClick,
-  bwidth,
   bheight,
   fz,
   children,
@@ -28,7 +27,6 @@ const Button = ({
         }`}
         onClick={onClick}
         style={{
-          width: bwidth ? `${bwidth}` : "",
           height: bheight ? `${bheight}` : "",
           fontSize: fz ? fz : "",
           outline: outline ? outline : "",

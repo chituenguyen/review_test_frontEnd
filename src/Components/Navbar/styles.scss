@@ -1,0 +1,60 @@
+@use '../../assets/styles/' as *;
+
+.logo{
+    cursor: pointer;
+    width: 70px;
+}
+.avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userMenu{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &__name{
+        font-size: 11px;
+        &__above{
+            font-style: italic;
+            color: rgb(207,207,207);
+            font-weight: 700;
+        }
+        &__under{
+            font-weight: 700;
+        }
+    }
+}
+
+@media screen and (min-width: 600px){
+    .logo{
+        width: 90px;
+    }
+    .userMenu{
+        &__name{
+            font-size: 12px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px){
+    .logo{
+        width: 100px;
+    }
+    .avatar{
+        width: 40px;
+        height: 40px;
+    }
+    .userMenu{
+        &__name{
+            font-size: 13px;
+        }
+    }
+}

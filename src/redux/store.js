@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import predictSlice from "./slices/predict";
+import storySlice from "./slices/story";
 
 export const store = configureStore({
-  reducer: { predict: predictSlice.reducer },
+  reducer: { story: storySlice.reducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
